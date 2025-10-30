@@ -1,98 +1,122 @@
-let score = "100";
+// ================================================
+// JavaScript Type Conversions and Operations
+// ================================================
 
-console.log(typeof score); // string
+/*
+TOPICS COVERED:
+1. Type Conversions
+   - String to Number
+   - Number to String
+   - Value to Boolean
+2. Operations
+   - Arithmetic Operations
+   - String Operations
+   - Boolean Operations
+3. Special Cases and Edge Cases
+*/
 
-let valueInNumber = Number(score); // Convert string to number
+// 1. TYPE CONVERSIONS
+// -----------------
 
-console.log(typeof valueInNumber); // number
+// 1.1 String to Number Conversion
+console.log("\n1. String to Number Conversions:");
+const strScore = "100";
+console.log("Original:", strScore, "Type:", typeof strScore);
+const numScore = Number(strScore);
+console.log("Converted:", numScore, "Type:", typeof numScore);
 
-console.log(valueInNumber); // 100
+// Common String to Number Conversions
+console.log("\nString to Number Examples:");
+console.table({
+    "Number('333')": Number("333"),
+    "Number('33.33')": Number("33.33"),
+    "Number('Alok')": Number("Alok"),
+    "Number('123abc')": Number("123abc"),
+    "Number('')": Number(""),
+    "Number(null)": Number(null),
+    "Number(undefined)": Number(undefined)
+});
 
-// 333 to number is 333
-// 33.33 to number is 33.33
-// "Alok" to number is NaN
-// true to number is 1
-// false to number is 0
-// null to number is 0
-// undefined to number is NaN
-// 33abc to number is NaN
+// 1.2 Value to Boolean Conversion
+console.log("\n2. Boolean Conversions:");
+const booleanExamples = {
+    "Boolean(1)": Boolean(1),
+    "Boolean(0)": Boolean(0),
+    "Boolean('Alok')": Boolean("Alok"),
+    "Boolean('')": Boolean(""),
+    "Boolean(null)": Boolean(null),
+    "Boolean(undefined)": Boolean(undefined),
+    "Boolean(NaN)": Boolean(NaN)
+};
+console.table(booleanExamples);
 
-let isLoggedIn = 1
+// 1.3 Number to String Conversion
+console.log("\n3. String Conversions:");
+const stringExamples = {
+    "String(333)": String(333),
+    "String(33.33)": String(33.33),
+    "String(true)": String(true),
+    "String(null)": String(null),
+    "String(undefined)": String(undefined),
+    "String(NaN)": String(NaN)
+};
+console.table(stringExamples);
 
-let booleanIsLoggedIn = Boolean(isLoggedIn); // Convert number to boolean
+// 2. OPERATIONS
+// -----------
 
-console.log(typeof booleanIsLoggedIn); // boolean
-
-console.log(booleanIsLoggedIn); // true
-
-// 1 to boolean is true
-// 0 to boolean is false
-// "Alok" to boolean is true
-// "" to boolean is false
-// null to boolean is false
-// undefined to boolean is false
-// NaN to boolean is false
-
-let someNumber = 33;
-
-let stringNumber = String(someNumber); // Convert number to string
-
-console.log(typeof stringNumber); // string
-
-console.log(stringNumber); // "33"
-
-// 333 to string is "333"
-// 33.33 to string is "33.33"
-// true to string is "true"
-// false to string is "false"
-// null to string is "null"
-// undefined to string is "undefined"   
-// NaN to string is "NaN"   
-
-// Note: JavaScript also does type coercion automatically in certain situations, such as during comparisons or arithmetic operations involving mixed data types. However, it's generally a good practice to perform explicit conversions to avoid unexpected behavior.
-
-//********************** Operation ************************//
-
+// 2.1 Basic Arithmetic
+console.log("\n4. Basic Operations:");
 let value = 100;
-let negValue = -value; // Unary negation operator to convert positive to negative
+console.log("Original Value:", value);
+console.log("Negation (-value):", -value);
+console.log("Increment (value++):", value++);
+console.log("After increment:", value);
 
-console.log(negValue); // -100
+// 2.2 String Operations
+console.log("\n5. String Operations:");
+const str1 = "Hello";
+const str2 = "World";
+console.log("Concatenation:", str1 + " " + str2);
+console.log("Template Literal:", `${str1} ${str2}`);
 
-let str = "alok";
-let str2 = " is a good boy.";
+// 2.3 Mixed Type Operations
+console.log("\n6. Mixed Type Operations:");
+console.log({
+    "String + Number": "5" + 3,      // "53" (concatenation)
+    "String - Number": "5" - 3,      // 2 (numeric operation)
+    "String * String": "5" * "2",    // 10 (numeric operation)
+    "String / String": "10" / "2",   // 5 (numeric operation)
+    "Invalid Division": "10" / "abc", // NaN
+    "Unary Plus String": +"5",       // 5 (number)
+    "Unary Plus Text": +"abc"        // NaN
+});
 
-let fullStr = str + str2; // Concatenation operator to combine strings
+// 2.4 Boolean Operations
+console.log("\n7. Boolean Operations:");
+console.table({
+    "true": true,
+    "+true": +true,
+    "!true": !true,
+    "!!true": !!true,
+    "false": false,
+    "+false": +false,
+    "!false": !false,
+    "!!false": !!false,
+    "true + true - false": true + true - false
+});
 
-console.log(fullStr); // "alok is a good boy."
+/* 
+IMPORTANT NOTES:
+--------------
+1. Always use explicit conversions when type conversion is needed
+2. Be careful with automatic type coercion in operations
+3. Number() can return NaN for invalid numeric strings
+4. Boolean() converts falsy values (0, "", null, undefined, NaN) to false
+5. String() can convert any value to a string representation
+*/
 
-console.log("5" + 3); // "53" (number 3 is converted to string and concatenated)
-console.log("5" - 3); // 2 (string "5" is converted to number and subtraction is performed)
-console.log("5" * "2"); // 10 (both strings are converted to numbers and multiplication is performed)
-console.log("10" / "2"); // 5 (both strings are converted to numbers and division is performed)
-console.log("10" / "abc"); // NaN (string "abc" cannot be converted to number)
-console.log(+"5"); // 5 (unary plus operator converts string "5" to number 5)
-console.log(+"abc"); // NaN (string "abc" cannot be converted to number)
-// In summary, JavaScript provides several ways to convert data types explicitly using functions like Number(), String(), and Boolean(). Additionally, certain operators can trigger implicit type conversions during operations.
-
-console.log(true); // true
-console.log(+true); // 1
-console.log(false); // false
-console.log(+false); // 0   
-console.log(!true); // false
-console.log(!false); // true    
-console.log(!!true); // true
-console.log(!!false); // false
-console.log(true + true); // 2
-
-let num1, num2, num3;
-
-num1 = num2 = num3 = 25; // Chained assignment
-
-console.log(num1, num2, num3); // 25 25 25
-
-let gameCounter = 100;
-
-gameCounter++; // Increment by 1
+// End of Type Conversions and Operations Lecture
 
 console.log(gameCounter); // 101
 
@@ -147,3 +171,4 @@ console.log(gameCounter); // 64
 
 // Note: Be cautious when using implicit type conversions, as they can sometimes lead to unexpected results. It's often better to use explicit conversions for clarity and maintainability of your code.
 
+// End of 03_conversionOperation.js
